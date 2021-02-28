@@ -1,0 +1,2 @@
+select c.name, count(e.employee_id) as emp_count from country as c, working_center as w,
+employee_working_center as e where c.id = w.country_id and w.id = e.working_center_id  and timestampdiff(day, e.start_date, current_date()) > 365 group by c.id order by emp_count desc, c.name;
